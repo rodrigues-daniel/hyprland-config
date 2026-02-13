@@ -1,0 +1,109 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 4,
+    "exclusive": true,
+    "passthrough": false,
+    "fixed-center": true,
+
+    // Define quais módulos aparecem em cada posição
+    "modules-left": ["custom/launcher","hyprland/workspaces", "hyprland/mode"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["pulseaudio", "pulseaudio#microphone", "network", "cpu", "memory", "clock", "tray"],
+    "custom/launcher": {
+        "format": "", // Ícone do Arch nas Nerd Fonts
+        "on-click": "wofi --show drun --style ~/.config/wofi/style.css --conf ~/.config/wofi/config",
+        "on-click-right": "killall waybar && waybar &", // Reinicia a barra com clique direito
+        "tooltip": false
+    },
+
+    // Configuração detalhada do Workspaces (Otimizada para 2 monitores)
+    "hyprland/workspaces": {
+        "all-outputs": false, // Mostra apenas os workspaces do monitor atual
+        "active-only": false,
+        "on-click": "activate",
+        "disable-scroll": true,
+        "format": "{name} {icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "  ",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+             "*": 3 // Mantém workspaces 1, 2 e 3 sempre visíveis
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "separate-outputs": true, // Título da janela só aparece no monitor onde ela está
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🌎 $1",
+            "(.*) - fish": "🐚 $1",
+             "(.*) - kitty": " $1"
+        },
+        "max-length": 40
+    },
+  
+"pulseaudio": {
+    "format": "{icon} {volume}%",
+       "format-muted": "󰝟",
+        "format-icons": {
+        "headphone": "",
+        "handsfree": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol"
+},
+
+"pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Mudo",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
+},  
+    "network": {
+    "interface": "wlan0",
+    "format-wifi": "{icon} {signalStrength}%",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "  ",
+    "format-disconnected": "󰤭  Disconectado",
+    "tooltip-format": "{essid} via {gwaddr} ",
+    "interval": 5
+},  
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "  {}%"
+    },
+   "clock": {
+        "format": "  {:%H:%M}",
+        "format-alt": "    {:%A, %d de %B}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+   "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    }
+}
+

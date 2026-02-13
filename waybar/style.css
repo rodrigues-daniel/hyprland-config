@@ -1,0 +1,81 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(30, 30, 46, 0.70);
+    color: #cdd6f4;
+    border-bottom: 1px solid rgba(100,100,100, 0.9);
+    margin: 5px 10px;
+    border-radius: 0px;
+}
+
+/* --- Launcher & Workspaces --- */
+#custom-launcher {
+    font-size: 18px;
+    margin-left: 15px;
+    color: #89b4fa;
+}
+
+#workspaces {
+    background: #313244;
+    margin: 5px 8px;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #bac2de;
+}
+
+#workspaces button.active {
+    color: #11111b;
+    background: linear-gradient(45deg, #cba6f7 0%, #89b4fa 100%);
+    border-radius: 8px;
+}
+
+/* --- Janela Central --- */
+#window { color: #cba6f7; font-weight: bold; }
+
+/* --- Cápsulas da Direita (Padronizadas) --- */
+#pulseaudio, 
+#pulseaudio.microphone, 
+#network, 
+#cpu, 
+#memory, 
+#clock, 
+#tray {
+    padding: 0 12px;
+    margin: 5px 3px;
+    border-radius: 10px;
+    background: #313244;
+}
+
+/* Cores dos Textos */
+#pulseaudio { color: #f9e2af; }
+#pulseaudio.microphone { color: #fab387; }
+#network { color: #a6e3a1; }
+#cpu { color: #89dceb; }
+#memory { color: #f5c2e7; }
+#clock { color: #cdd6f4; margin-right: 10px; }
+
+/* --- ESTADOS DE ALERTA (Mudo e Desconectado) --- */
+
+#pulseaudio.muted,
+#pulseaudio.microphone.source-muted,
+#network.disconnected {
+    background-color: red; /* Vermelho Alerta */
+    color: #fff;
+}
+
+/* Destaque para Fone de Ouvido conectado */
+#pulseaudio.headphone {
+    color: #b4befe;
+}
+
+
